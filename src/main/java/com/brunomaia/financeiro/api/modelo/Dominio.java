@@ -9,8 +9,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "dominio_origem")
-public class DominioOrigem {
+@Table(name = "dominio")
+public class Dominio {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,6 +41,7 @@ public class DominioOrigem {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
+		result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
 		return result;
 	}
 
@@ -52,11 +53,16 @@ public class DominioOrigem {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		DominioOrigem other = (DominioOrigem) obj;
+		Dominio other = (Dominio) obj;
 		if (codigo == null) {
 			if (other.codigo != null)
 				return false;
 		} else if (!codigo.equals(other.codigo))
+			return false;
+		if (descricao == null) {
+			if (other.descricao != null)
+				return false;
+		} else if (!descricao.equals(other.descricao))
 			return false;
 		return true;
 	}
