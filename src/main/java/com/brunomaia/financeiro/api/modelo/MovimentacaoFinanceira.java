@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,17 +22,24 @@ public class MovimentacaoFinanceira {
 	private Long codigo;
 
 	@NotNull
-	@DecimalMin(value = "0.0", inclusive = false)
-	private BigDecimal valor;
-
+	@Column(name = "codigo_origem")
+	private Long codigoOrigem;
+	
 	@NotNull
+	@Column(name = "codigo_categoria")
+	private Long codigoCategoria;
+	
+	@NotNull
+	@Column(name = "data_registro")
 	private LocalDateTime registro;
 
 	@NotNull
+	@Column(name = "data_referencia")
 	private LocalDate referencia;
 
 	@NotNull
-	private Long codigoOrigem;
+	@DecimalMin(value = "0.0", inclusive = false)
+	private BigDecimal valor;
 
 	public Long getCodigoOrigem() {
 		return codigoOrigem;
